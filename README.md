@@ -1,6 +1,10 @@
 
 # Challenge_1a
 
+**Team Name:** WiNNER  
+**Institution:** Vivekanand Institute of Professional Studies, GGSIPU  
+**Team Members:** Yuvraj Choudhary, Anmol Dua, Meet Goyal
+
 ## Project Structure
 
 ```
