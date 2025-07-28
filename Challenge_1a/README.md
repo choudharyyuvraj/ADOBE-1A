@@ -5,13 +5,11 @@
 
 ```
 Challenge_1a/
-├── sample_dataset/
-│   ├── pdfs/            # Input PDF files (mounts to /app/input in Docker)
-│   ├── outputs/         # Output JSON files (mounts to /app/output in Docker)
-│   └── schema/          # Output schema definition (if needed)
-│       └── output_schema.json
+├── input/               # Input PDF files (mounts to /app/input in Docker)
+├── output/              # Output JSON files (mounts to /app/output in Docker)
 ├── Dockerfile           # Docker container configuration
-├── process_pdfs.py      # Main processing script
+├── main.py              # Main orchestrator script
+├── process_pdfs.py      # PDF processing module
 ├── requirements.txt     # Python dependencies
 └── README.md            # Project documentation
 ```
@@ -28,17 +26,20 @@ Challenge_1a/
 
 1. **Build the Docker image:**
    ```sh
-   docker build --platform linux/amd64 -t pdf-processor .
+   docker build --platform linux/amd64 -t pdf-orchestrator .
    ```
 2. **Run the container:**
    ```sh
-   docker run --rm -v $(pwd)/sample_dataset/pdfs:/app/input:ro -v $(pwd)/sample_dataset/outputs:/app/output --network none pdf-processor
+   # On Windows (from Challenge_1a directory):
+   docker run --rm -v "%cd%\input":/app/input:ro -v "%cd%\output":/app/output pdf-orchestrator
+   
+   # On Linux/Mac (from Challenge_1a directory):
+   docker run --rm -v "$(pwd)/input":/app/input:ro -v "$(pwd)/output":/app/output pdf-orchestrator
    ```
-   (On Windows, use `%cd%` instead of `$(pwd)`)
 
 ## Output
 
-For each input PDF, a corresponding `*_outline.json` file is generated in `sample_dataset/outputs/`.
+For each input PDF, a corresponding `*_outline.json` file is generated in the `output/` directory.
 
 ## Dependencies
 

@@ -1,2 +1,2 @@
-# Add your dependencies here, e.g.
-PyMuPDF
+pdfplumber
+PyPDF2
